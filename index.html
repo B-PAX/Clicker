@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clicker</title>
+    <style>
+        
+    body {
+        background-color: bisque;
+    }    
+        
+    #myButton {
+        font-size: 100px;
+        background-color: aqua;
+        border-color:black;
+        
+    }
+
+    #changingNumber {
+        font-size: 100px;
+    }
+
+    #all {    
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+        
+    </style>
+</head>
+<body>
+    <div id='all'>
+    <p id ='changingNumber'>0</p>
+    <button id ='myButton' onclick = "displaycount()"> Count! </button>
+    </div>
+</body>
+<script>
+
+let count = (function() {
+    let counter = 0;
+    return function() {return counter +=1;}
+})();
+
+function change(min,max){
+min = Math.ceil(min);
+max = Math.floor(max);
+return Math.floor(Math.random() * (max - min) + 1);
+};
+
+function displaycount(){
+    document.getElementById('changingNumber').innerHTML = count ();
+    let randomColor = 
+"rgb(" + change(0,255) + "," + change(0,255) + "," + change(0,255)
+    ")";
+    document.body.style.backgroundColor = randomColor;
+};
+
+</script>
+</html>
